@@ -2,17 +2,19 @@ var express = require('express')
 var app = express()
 var vimeolocation = require('./routes/vimeoAPI')
 
-/* Creating server */
-//  response.writeHead(200, {"Content-Type": "text/plain"});
+  // create upload request to vimeo
+  app.get('/uploadvideo', vimeolocation.createuploadVideoRequest)
 
-// respond with "hello world" when a GET request is made to the homepage
-  app.get('/', vimeolocation.upload)
+  // get all uploaded uploaded videos
+  app.get('/getvideo', vimeolocation.uploadedvideos)
 
-app.get('/home', function (req, res) {
+// dummy eg
+/* app.get('/home', function (req, res) {
 res.setHeader('Access-Control-Allow-Origin', '*');
 res.end('hello from home')
-})
-  //response.end("Hello World\n");
+}) */
+
+
   /*Start listening*/
   app.listen(8000, function(){
     console.log('server started at 8000')
